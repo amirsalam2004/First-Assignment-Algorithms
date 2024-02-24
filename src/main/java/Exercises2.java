@@ -49,8 +49,31 @@ public class Exercises2 {
     */
 
     public int romanToInt(String s) {
-        // TODO
-        return 0;
+        s+="  ";
+        int num=0;
+        for(int i=0;i<s.length()-2;i++){
+            if(s.substring(i,i+1).equals("M"))
+                num+=1000;
+            if(s.substring(i,i+1).equals("D"))
+                num+=500;
+            if(s.substring(i,i+1).equals("C"))
+                num+=100;
+            if(s.substring(i,i+1).equals("L"))
+                num+=50;
+            if(s.substring(i,i+1).equals("X"))
+                num+=10;
+            if(s.substring(i,i+1).equals("V"))
+                num+=5;
+            if(s.substring(i,i+1).equals("I"))
+                num+=1;
+            if(s.substring(i,i+2).equals("CM") || s.substring(i,i+2).equals("CD"))
+                num-=200;
+            if(s.substring(i,i+2).equals("XL") || s.substring(i,i+2).equals("XC"))
+                num-=20;
+            if(s.substring(i,i+2).equals("IX") || s.substring(i,i+2).equals("IV"))
+                num-=2;
+        }
+        return num;
     }
 
     /*
