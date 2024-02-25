@@ -88,8 +88,20 @@ public class Exercises2 {
     */
 
     public List<List<Integer>> permute(int[] nums) {
-        // TODO
-        return null;
+        List<List<Integer>> permutes = new ArrayList<>();
+        permutes.add(List.of(nums[0]));
+        for (int i = 1; i < nums.length; i++) {
+            List<List<Integer>> permutes_copy = new ArrayList<>();
+            for (int permute = 0; permute < permutes.size(); permute++) {
+                for (int j = 0; j <= permutes.get(permute).size(); j++) {
+                    List<Integer> newPermute = new ArrayList<>(permutes.get(permute));
+                    newPermute.add(j, nums[i]);
+                    permutes_copy.add(newPermute);
+                }
+            }
+            permutes = permutes_copy;
+        }
+        return permutes;
     }
 
     public static void main(String[] args) {
